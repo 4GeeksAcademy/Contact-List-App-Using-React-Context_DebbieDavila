@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import PinkBabies from "../../img/PinkBabies.jpg";
+import { Link } from "react-router-dom";
+import { AppContext } from "../layout.js";
 
 export const ContactCard = props => {
     const { fullname, address, email, phone } = props.contact;
-    //initialize state here
+    const { contacts, setContacts, myFetch, currentContact, setCurrentContact } = useContext(AppContext)
 
 
     return (
@@ -16,11 +18,18 @@ export const ContactCard = props => {
                 </div>
                 <div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
                     <div className=" float-right">
-                        <button className="btn">
-                            <i className="fas fa-pencil-alt mr-3" />
-                        </button>
-                        <button className="btn" onClick={() => props.onDelete({
-                        })}>
+
+                        <Link className="btn btn-success" to="/edit">
+                            <button onClick={() => setCurrentContact(props.contact)} className="btn" >
+                                <i className="fas fa-pencil-alt mr-3" />
+                            </button>
+                        </Link>
+                        <button className="btn" onClick={() => {
+                            setCurrentContact(props.contact)
+                            props.onDelete({})
+                        }
+                        
+                        }>
                             <i className="fas fa-trash-alt" />
                         </button>
                     </div>

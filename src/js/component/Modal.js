@@ -1,8 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { AppContext } from "../layout";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 
 export const Modal = props => {
+    const { contacts, setContacts, myFetch, currentContact, setCurrentContact } = useContext(AppContext)
+    const handleDelete = () => {
+
+        fetch("https://playground.4geeks.com/apis/fake/contact/" + currentContact.id, {
+            method: "DELETE"
+        })
+            .then(resp => resp.json())
+            .then(data => myFetch())
+
+    }
+
     return (
         <div className="modal" tabIndex="-1" role="dialog" style={{ display: props.show ? "inline-block" : "none" }}>
             <div className="modal-dialog" role="document">
@@ -29,7 +41,7 @@ export const Modal = props => {
                         <button type="button" className="btn btn-primary">
                             Better Not!
                         </button>
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">
+                        <button onClick={handleDelete} type="button" className="btn btn-secondary" data-dismiss="modal">
                             Go ahead and do it!
                         </button>
                     </div>

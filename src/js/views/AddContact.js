@@ -14,7 +14,7 @@ export const AddContact = () => {
     const handleSave = () => {
 
         var newContact = {
-            "full-name": fullname,
+            "full_name": fullname,
             "email": email,
             "agenda_slug": "DebbieDavila",
             "address": address,
@@ -39,19 +39,19 @@ export const AddContact = () => {
                 <form>
                     <div className="form-group">
                         <label>Full Name</label>
-                        <input type="text" onChange={(e) => setFullname(e.target.value)} className="form-control" placeholder="Full Name" />
+                        <input type="text" onChange={(e) => setFullname(e.target.value)} className="form-control" placeholder="Enter Full Name" />
                     </div>
                     <div className="form-group">
                         <label>Email</label>
-                        <input type="email" className="form-control" placeholder="Enter email" />
+                        <input type="email" onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="Enter email" />
                     </div>
                     <div className="form-group">
                         <label>Phone</label>
-                        <input type="phone" className="form-control" placeholder="Enter phone" />
+                        <input type="phone" onChange={(e) => setPhone(e.target.value)} className="form-control" placeholder="Enter phone" />
                     </div>
                     <div className="form-group">
                         <label>Address</label>
-                        <input type="text" className="form-control" placeholder="Enter address" />
+                        <input type="text" onChange={(e) => setAddress(e.target.value)} className="form-control" placeholder="Enter address" />
                     </div>
                     <button onClick={handleSave} type="button" className="btn btn-primary form-control">
                         save

@@ -11,7 +11,8 @@ export const Contacts = () => {
     });
 
     const { contacts, setContacts } = useContext(AppContext);
-
+    const {currentcontact, setCurrentContact} = useContext(AppContext);
+    
     return (
         <div className="container">
             <div>
@@ -23,12 +24,13 @@ export const Contacts = () => {
                 <div id="contacts" className="panel-collapse collapse show" aria-expanded="true">
                     <ul className="list-group pull-down" id="contact-list">
                         {
-                            contacts.map(
-                                (contact) => <ContactCard contact={contact} 
-                                onDelete={() => setState(
-                                    { showModal: true, id: contact.id }
+                            contacts.length > 0 ? contacts.map(
+                                (contact) => <ContactCard contact={contact}
+                                    onDelete={() => setState(
+                                        { showModal: true, id: contact.id }
                                     )} />
                             )
+                                : "Loading........"
                         }
 
 
