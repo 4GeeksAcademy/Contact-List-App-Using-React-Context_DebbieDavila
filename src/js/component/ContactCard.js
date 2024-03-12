@@ -4,9 +4,14 @@ import PropTypes from "prop-types";
 import PinkBabies from "../../img/PinkBabies.jpg";
 import { Link } from "react-router-dom";
 import { AppContext } from "../layout.js";
+//Need to import all things that will be used on this particular component(which is ContactCard)//
 
+
+//Need to export this particular component which is ContactCard to AppContext
 export const ContactCard = props => {
+    //the destructuring of the following so it can be used from the props.contact without having to type it all out.
     const { fullname, address, email, phone } = props.contact;
+    //the useContext hook gives you access to the variable inside of the Global Context(AppContext-here carries the Global Context and in this file is in layout.js)
     const { contacts, setContacts, myFetch, currentContact, setCurrentContact } = useContext(AppContext)
 
 
